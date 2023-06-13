@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaslands Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+    <body>
+        <header>
+            <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+                <button class="btn btn-primary" data-bs-target="#modalNewCar" data-bs-toggle="modal">Nuevo</button>
+                <button class="btn btn-primary" onclick="pruebaDatos()">Test</button>
+            </nav>
+        </header>
+        <main>
+            <div id="principal">
+                <!-- Acá van las tarjetas -->
+            </div>
+            <div id="partida">
+                <div class="center">
+                    VELOCIDAD GLOBAL
+                    <br>
+                    <input type="number" class="gearInput center" max="6" min="0">
+                </div>
+                <div class="center">
+                    <button type="button" class="btn btn-primary" onclick="roll()">TIRAR!!!</button>
+                    <div class="skids">
+                        <div class="dice-box">
+                            <span id="diceTest"></span>
+                        </div>
+                        <div class="dice-box">
+                            <span id="diceTest2"></span>
+                        </div>
+                        <div class="dice-box">
+                            <span id="diceTest3"></span>
+                        </div>
+                        <div class="dice-box">
+                            <span id="diceTest4"></span>
+                        </div>
+                    </div>
+                    <div class="dices">
+                        Cantidad de dados
+                        <input type="text" class="form-control" name="" id="diceQty" aria-describedby="helpId" placeholder="">
+                        <span>D6</span>
+                        </br>
+                        <button type="button" class="btn btn-info" onclick="mulDices()">TIRRARARAR</button>
+                        <ul id="listaDados">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+  <!-- Modal -->
+        <div class="modal fade" id="modalNewCar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Elegir Tipo de Vehiculo</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <!-- Body Primer Modal -->
+                    <div class="modal-body">
+                        <div class="modal-body">
+                            Selecciona la categoría (Peso)
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="peso" id="pesoLigero" value="ligero">
+                                <label class="form-check-label" for="pesoLigero">Ligero</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="peso" id="pesoMedio" value="medio">
+                                <label class="form-check-label" for="pesoMedio">Medio</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="peso" id="pesoPesado" value="pesado">
+                                <label class="form-check-label" for="pesoPesado">Pesado</label>
+                            </div>
+                        
+                            <!-- Select Para ligero -->
+                            <div class="mb-3 esconder" id="lightSelect">
+                                <label for="lightCarSelect" class="form-label">Tipo de vehiculo(Ligero)</label>
+                                <select class="form-select form-select-lg" name="carTypeLight" id="lightCarSelect">
+                                    <option value="" selected>Elige -.-</option>
+                                    <option value="moto">Motocicleta</option>
+                                    <option value="bug">Buggy</option>
+                                    <option value="trike">Triciclo</option>
+                                    <option value="sidecar">Moto y Sidecar</option>
+                                </select>
+                            </div>
+                        
+                        
+                            <!-- Select para Pesado -->
+                            <div class="mb-3 esconder" id="midSelect">
+                                <label for="midCarSelect" class="form-label">Tipo de vehiculo(Medio)</label>
+                                <select class="form-select form-select-lg" name="carTypeMid" id="midCarSelect">
+                                    <option value="" selected>Elige -.-</option>
+                                    <option value="car">Coche</option>
+                                    <option value="jeep">Jeep</option>
+                                    <option value="sport">Deportivo</option>
+                                    <option value="van">Furgoneta</option>
+                                    <option value="pickup">Pick-up</option>
+                                    <option value="tractor">Tractor</option>
+                                    <option value="giro">Girocoptero</option>
+                                </select>
+                            </div>
+                        
+                            <!-- Select para pesado -->
+                            <div class="mb-3 esconder" id="heavySelect">
+                                <label for="heavyCarSelect" class="form-label">Tipo de vehiculo(Pesado)</label>
+                                <select class="form-select form-select-lg" name="carTypeHeavy" id="heavyCarSelect">
+                                    <option value="" selected>Elige -.-</option>
+                                    <option value="monster">Monster Truck</option>
+                                    <option value="bus">Autobus</option>
+                                    <option value="tourBus">Autobus Turístico</option>
+                                    <option value="warRig">Camion de Guerra</option>
+                                    <option value="heli">Helicoptero</option>
+                                    <option value="tank">Tanque</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" onclick="procederEquipo()">Siguiente</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Elige Equipo (<span id="vehType"></span>)</h1>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                        <br>
+                        <div class="info">Vida: <span id="hull-info"></span> Manejo: <span id="handling-info"></span> Vel: <span id="maxGearInfo"></span> Espacios: <span id="slots"></span> Tripulacion: <span id="crew"></span> Precio: <span id="price"></span></div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="equipment-main" id="itemsList">
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-target="#modalNewCar" data-bs-toggle="modal">Regresar</button>
+                        <button class="btn btn-primary" onclick="generar()" id="generarBtn" class="btn-close" data-bs-dismiss="modal">Generar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
