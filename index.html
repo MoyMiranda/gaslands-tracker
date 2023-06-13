@@ -27,7 +27,11 @@
                 <div class="center">
                     VELOCIDAD GLOBAL
                     <br>
-                    <input type="number" class="gearInput center" max="6" min="0">
+                    <div class="gear-Selector">
+                        <!-- <button onclick="globalGear(0)">-</button> -->
+                        <span class="gearInput center" id="globalGearActual">6</span>
+                        <button onclick="globalGear(1)">+</button>
+                    </div>
                 </div>
                 <div class="center">
                     <button type="button" class="btn btn-primary" onclick="roll()">TIRAR!!!</button>
@@ -47,7 +51,11 @@
                     </div>
                     <div class="dices">
                         Cantidad de dados
-                        <input type="text" class="form-control" name="" id="diceQty" aria-describedby="helpId" placeholder="">
+                        <div class="input-group mb-3">
+                            <button class="btn btn-outline-secondary" type="button" onclick="diceQty(0)">-</button>
+                            <input type="number" id="diceQty" class="form-control center" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="0">
+                            <button class="btn btn-outline-secondary" type="button" onclick="diceQty(1)">+</button>
+                        </div>
                         <span>D6</span>
                         </br>
                         <button type="button" class="btn btn-info" onclick="mulDices()">TIRRARARAR</button>
@@ -58,7 +66,7 @@
                 </div>
             </div>
         </main>
-  <!-- Modal -->
+        <!-- Modal -->
         <div class="modal fade" id="modalNewCar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -156,5 +164,3 @@
         </div>
     </body>
 </html>
-
-

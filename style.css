@@ -140,7 +140,11 @@ main{
     border: none;
     background-color:rgba(0, 0, 0, 0);
 }
+.gear-Selector{
+    display: flex;
+}
 .gearInput{
+    display: block;
     border: 2px solid #CD1A1A !important;
     border-radius: 5px;
     font-size: 50px;

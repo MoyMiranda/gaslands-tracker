@@ -247,6 +247,10 @@ function generar() {
             <div class="basic-stats">
                 <span>Handling: `+veh['handling']+`</span>
                 <span>Tripulacion: <span>`+veh['crew']+`</span></span>
+                <span>
+                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="gearInd(`+totalTarjetas+`,1)">fasto</button>
+                    <button type="button" class="btn btn-outline-dark btn-sm" onclick="gearInd(`+totalTarjetas+`,0)">lento</button>
+                </span>
             </div>
             <div class="hull">
                 <span><span class="actualHull">`+veh['hull']+`</span><br>/<span class="totalHull">`+veh['hull']+`</span></span>
@@ -258,7 +262,7 @@ function generar() {
         <div class="gear">
                             <div class="card-title" style="text-align: center;">GEAR</div>
                             <div class="actual-gear">
-                                <input type="number" class="gearInput" max="`+veh['gearMax']+`" min="0">
+                                0
                             </div>
             <div class="max-gear">MAX: `+veh['gearMax']+`</div>
         </div>
@@ -271,7 +275,6 @@ function generar() {
             <span>
                 <button type="button" class="btn btn-outline-danger btn-sm" onclick="dmg(`+totalTarjetas+`,0)">Dañar</button>
                 <button type="button" class="btn btn-outline-success btn-sm" onclick="dmg(`+totalTarjetas+`,1)">Reparar</button>
-                <img class="img-hazard" src="assets/damage.png" alt="">
             </span>
             <span>
                 <input type="number" name=""  class="hazardNumber" max="6" min="0">
@@ -372,4 +375,53 @@ function dmg(id,modo) {
     console.log(newHull);
     $(id +' .actualHull').html(newHull);
     toggle.toggleClass('hull-cool hull-dmg');
+}
+
+function gearInd(id,modo) {
+    //Modo 0 rapido, modo 1 lento
+    id = '#tarjeta'+id;
+    var actualGear = parseInt($(id+' .actual-gear').html());
+    var maxGear = parseInt($(id+' .max-gear').html().slice(-1));
+    console.log(maxGear);
+    switch (modo) {
+        case 0:
+            actualGear = actualGear <= 0  ? 0 :actualGear-1;
+        break;
+        case 1:
+            actualGear = actualGear >= maxGear ? maxGear :actualGear+1;
+        break;
+    }
+
+    console.log(actualGear);
+    $(id+' .actual-gear').html(actualGear);
+
+}
+
+function globalGear(modo) {
+    //Modo 0:Restar, 1:Sumar
+    var html = parseInt($('#globalGearActual').html());
+    switch (modo) {
+        case 0:
+            html = html <= 0  ? 0 :html-1;
+        break;
+        case 1:
+            html = html >= 6  ? 1 :html+1;
+        break;
+    }
+    console.log(html);
+    $('#globalGearActual').html(html);
+}
+function diceQty(modo) {
+    var target = $('#diceQty');
+    var dados = target.val();
+    dados = parseInt(dados);
+    switch (modo) {
+        case 0:
+            dados = dados <= 0  ? 0 :dados-1;
+        break;
+        case 1:
+            dados = dados+1;
+        break;
+    }
+    target.val(dados);
 }
