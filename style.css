@@ -128,8 +128,9 @@ main{
     width: 25px;
     height: 25px;
 }
-.equipment-main{
-    
+.gear-control-img{
+    width: 30px;
+    height: 30px;
 }
 .special-info{
     display: flex;

@@ -248,8 +248,8 @@ function generar() {
                 <span>Handling: `+veh['handling']+`</span>
                 <span>Tripulacion: <span>`+veh['crew']+`</span></span>
                 <span>
-                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="gearInd(`+totalTarjetas+`,1)">fasto</button>
-                    <button type="button" class="btn btn-outline-dark btn-sm" onclick="gearInd(`+totalTarjetas+`,0)">lento</button>
+                    <button type="button" class="btn btn-outline-dark btn-sm" onclick="gearInd(`+totalTarjetas+`,0)"><img src="assets/shift-down.png" alt="" srcset="" class="gear-control-img"></button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="gearInd(`+totalTarjetas+`,1)"><img src="assets/shift-up.png" alt="" srcset="" class="gear-control-img"></button>
                 </span>
             </div>
             <div class="hull">
