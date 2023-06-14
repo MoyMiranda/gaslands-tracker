@@ -81,7 +81,7 @@ const carData = {
         "price":15
     },
     'pickup' : {
-        "name":"Furgoneta",
+        "name":"Pick-Up",
         "peso":1,
         "hull":12,
         "handling":2,
