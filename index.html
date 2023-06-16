@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaslands Tracker</title>
+    <title>Gaslands Companion</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
@@ -34,31 +34,25 @@
                     </div>
                 </div>
                 <div class="center">
-                    <button type="button" class="btn btn-primary" onclick="roll()">TIRAR!!!</button>
-                    <div class="skids">
-                        <div class="dice-box">
-                            <span id="diceTest"></span>
-                        </div>
-                        <div class="dice-box">
-                            <span id="diceTest2"></span>
-                        </div>
-                        <div class="dice-box">
-                            <span id="diceTest3"></span>
-                        </div>
-                        <div class="dice-box">
-                            <span id="diceTest4"></span>
-                        </div>
+                    No. de Dados (Derrape)
+                    <div class="input-group mb-3">
+                        <button class="btn btn-outline-secondary" type="button" onclick="diceQty(0,'skidQty')">-</button>
+                        <input type="number" id="skidQty" class="form-control center" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="0">
+                        <button class="btn btn-outline-secondary" type="button" onclick="diceQty(1,'skidQty')">+</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="roll('skidBox','skidQty')">Derrape</button>
+                    <div class="skids" id="skidBox">
+
                     </div>
                     <div class="dices">
-                        Cantidad de dados
+                        No. de Dados (D6)
                         <div class="input-group mb-3">
-                            <button class="btn btn-outline-secondary" type="button" onclick="diceQty(0)">-</button>
+                            <button class="btn btn-outline-secondary" type="button" onclick="diceQty(0,'diceQty')">-</button>
                             <input type="number" id="diceQty" class="form-control center" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="0">
-                            <button class="btn btn-outline-secondary" type="button" onclick="diceQty(1)">+</button>
+                            <button class="btn btn-outline-secondary" type="button" onclick="diceQty(1,'diceQty')">+</button>
                         </div>
-                        <span>D6</span>
-                        </br>
-                        <button type="button" class="btn btn-info" onclick="mulDices()">TIRRARARAR</button>
+                        
+                        <button type="button" class="btn btn-info" onclick="roll('listaDados','diceQty')">Lanza</button>
                         <ul id="listaDados">
                             
                         </ul>

@@ -311,49 +311,39 @@ function rango(number) {
     }
 }
 
-function roll() {
-    var imgs = [];
-    for (let i = 0; i < 4; i++) {
-
-        var resultado = Math.round(Math.random() * (6 - 1) + 1);
-        var img = null;
-        switch (true) {
-            case resultado == 1:        
-                img = 'hazard-dice';
-            break;
-            case resultado == 2:        
-                img = 'spin';
-            break;
-            case resultado == 3:        
-                img = 'slide';
-            break;
-            case resultado > 3 && resultado < 7:        
-                img = 'shift';
-            break;
-        }
-        var html = `<img src="assets/`+img+`.png" class="dice-img" alt="" srcset="">`;
-        imgs.push(html);
-    }
-    console.log(imgs);
-
-    $('#diceTest').html(imgs[0]);
-    $('#diceTest2').html(imgs[1]);
-    $('#diceTest3').html(imgs[2]);
-    $('#diceTest4').html(imgs[3]);
-}
-
-function mulDices() {
-    var qty = $('#diceQty').val();
-    var dados = [];
+function roll(target,input) {
     var html = '';
+    var qty = $('#'+input).val();
+
     for (let i = 0; i < qty; i++) {
         var resultado = Math.round(Math.random() * (6 - 1) + 1);
-        dados.push(resultado);
-    }
-    dados.forEach(function callback(value, index) {
-        html += `<li>Dado #`+(index+1)+` = `+value+`</li>`
-    });
-    $('#listaDados').html(html);
+        if (target == 'skidBox'){
+            var img = null;
+            switch (true) {
+                case resultado == 1:        
+                    img = 'hazard-dice';
+                break;
+                case resultado == 2:        
+                    img = 'spin';
+                break;
+                case resultado == 3:        
+                    img = 'slide';
+                break;
+                case resultado > 3 && resultado < 7:        
+                    img = 'shift';
+                break;
+            }
+            html += `
+                <div class="dice-box">
+                    <span id="diceTest4"><img src="assets/`+img+`.png" class="dice-img" alt="" srcset=""></span>
+                </div>
+            `;
+        }
+        if (target == 'listaDados'){
+            html += `<li>Dado #`+(i+1)+` = `+resultado+`</li>`;
+        }
+    }   
+    $('#'+target).html(html);
 }
 
 function dmg(id,modo) {
@@ -411,8 +401,8 @@ function globalGear(modo) {
     console.log(html);
     $('#globalGearActual').html(html);
 }
-function diceQty(modo) {
-    var target = $('#diceQty');
+function diceQty(modo, id) {
+    var target = $('#'+id);
     var dados = target.val();
     dados = parseInt(dados);
     switch (modo) {
