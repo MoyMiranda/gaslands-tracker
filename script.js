@@ -269,7 +269,7 @@ function generar() {
         `+equipment+`
     </div>
         <div class="card-footer">
-            <span class="peso">`+peso+`</span>
+            <span class="peso"><img src="assets/peso.png" alt="" srcset="" class="img-card-btn">`+peso+`</span>
             <span>
                 <button type="button" class="btn btn-outline-danger btn-sm" onclick="dmg(`+totalTarjetas+`,0)">
                     <img class="img-card-btn" src="assets/damage.png" alt="">
