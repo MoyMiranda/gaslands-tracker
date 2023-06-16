@@ -214,13 +214,13 @@ function generar() {
     var peso = '';
     switch (veh['peso']) {
         case 0:
-            peso = 'Peso Ligero';
+            peso = 'Ligero';
         break;
         case 1:
-            peso = 'Peso Medio';
+            peso = 'Medio';
         break;
         case 2:
-            peso = 'Vehiculo Pesado';
+            peso = 'Pesado';
         break;
     }
 
@@ -279,14 +279,16 @@ function generar() {
                 </button>
             </span>
             <span>
-                <input type="number" name=""  class="hazardNumber" max="6" min="0">
-                <img class="img-hazard" src="assets/hazard-dice.png" alt="">
+                <div class="input-group">
+                    <button class="btn btn-outline-secondary" type="button" onclick="hazardCount(0,`+totalTarjetas+`)"><img class="img-card-btn" src="assets/hazard-less.png" alt=""></button>
+                    <span class="input-group-text bg-transparent hazard-counter">0</span>
+                    <button class="btn btn-outline-secondary" type="button" onclick="hazardCount(1,`+totalTarjetas+`)"><img class="img-card-btn" src="assets/hazard-plus.png" alt=""></button>
+                </div>
             </span>
         </div>
     </div>`;
     $('#principal').append(tarjeta);
     totalTarjetas++;
-    // $('#modalNewCar').modal('hide');
 }
 
 function rango(number) {
@@ -382,6 +384,20 @@ function gearInd(id,modo) {
     console.log(actualGear);
     $(id+' .actual-gear').html(actualGear);
 
+}
+
+function hazardCount(modo,id) {
+    id = '#tarjeta'+id;
+    var actualHazard = parseInt($(id+' .hazard-counter').html());
+    switch (modo) {
+        case 0:
+            actualHazard = actualHazard <= 0  ? 0 :actualHazard-1;
+        break;
+        case 1:
+            actualHazard = actualHazard >= 6 ? 6 :actualHazard+1;
+        break;
+    }
+    $(id+' .hazard-counter').html(actualHazard);
 }
 
 function globalGear(modo) {
