@@ -204,13 +204,11 @@ function generaJSONveh(){
         upgrades.push(mejora.name);
     });
     actual.upgrades = upgrades;
-
-    // currentVehData = actual;
+    console.log(actual);
     return actual;
 }
 
 function generar() {
-
     var veh = generaJSONveh();
     // console.log(veh);
     var peso = '';
@@ -248,8 +246,8 @@ function generar() {
                 <span>Handling: `+veh['handling']+`</span>
                 <span>Tripulacion: <span>`+veh['crew']+`</span></span>
                 <span>
-                    <button type="button" class="btn btn-outline-dark btn-sm" onclick="gearInd(`+totalTarjetas+`,0)"><img src="assets/shift-down.png" alt="" srcset="" class="gear-control-img"></button>
-                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="gearInd(`+totalTarjetas+`,1)"><img src="assets/shift-up.png" alt="" srcset="" class="gear-control-img"></button>
+                    <button type="button" class="btn btn-outline-dark btn-sm" onclick="gearInd(`+totalTarjetas+`,0)"><img src="assets/shift-down.png" alt="" srcset="" class="img-card-btn"></button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="gearInd(`+totalTarjetas+`,1)"><img src="assets/shift-up.png" alt="" srcset="" class="img-card-btn"></button>
                 </span>
             </div>
             <div class="hull">
@@ -273,8 +271,12 @@ function generar() {
         <div class="card-footer">
             <span class="peso">`+peso+`</span>
             <span>
-                <button type="button" class="btn btn-outline-danger btn-sm" onclick="dmg(`+totalTarjetas+`,0)">Dañar</button>
-                <button type="button" class="btn btn-outline-success btn-sm" onclick="dmg(`+totalTarjetas+`,1)">Reparar</button>
+                <button type="button" class="btn btn-outline-danger btn-sm" onclick="dmg(`+totalTarjetas+`,0)">
+                    <img class="img-card-btn" src="assets/damage.png" alt="">
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm" onclick="dmg(`+totalTarjetas+`,1)">
+                    <img class="img-card-btn" src="assets/fix.png" alt="">
+                </button>
             </span>
             <span>
                 <input type="number" name=""  class="hazardNumber" max="6" min="0">
@@ -284,11 +286,7 @@ function generar() {
     </div>`;
     $('#principal').append(tarjeta);
     totalTarjetas++;
-    $('#modalNewCar').modal('hide');
-}
-
-function cerrar() {
-    $('#modalNewCar').modal('hide');
+    // $('#modalNewCar').modal('hide');
 }
 
 function rango(number) {
@@ -362,7 +360,6 @@ function dmg(id,modo) {
             newHull = newHull >= maxHull  ? maxHull :newHull+1;
         break;
     }
-    console.log(newHull);
     $(id +' .actualHull').html(newHull);
     toggle.toggleClass('hull-cool hull-dmg');
 }
@@ -401,6 +398,7 @@ function globalGear(modo) {
     console.log(html);
     $('#globalGearActual').html(html);
 }
+
 function diceQty(modo, id) {
     var target = $('#'+id);
     var dados = target.val();
