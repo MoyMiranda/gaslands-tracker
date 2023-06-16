@@ -243,8 +243,8 @@ function generar() {
         <div class="main-stats">
             <div class="card-title">`+veh['name']+`</div>
             <div class="basic-stats">
-                <span>Handling: `+veh['handling']+`</span>
-                <span>Tripulacion: <span>`+veh['crew']+`</span></span>
+                <span><img src="assets/handling.png" alt="" srcset="" class="img-card-btn"> `+veh['handling']+`</span>
+                <span><img src="assets/crew.png" alt="" srcset="" class="img-card-btn"> <span>`+veh['crew']+`</span></span>
                 <span>
                     <button type="button" class="btn btn-outline-dark btn-sm" onclick="gearInd(`+totalTarjetas+`,0)"><img src="assets/shift-down.png" alt="" srcset="" class="img-card-btn"></button>
                     <button type="button" class="btn btn-outline-danger btn-sm" onclick="gearInd(`+totalTarjetas+`,1)"><img src="assets/shift-up.png" alt="" srcset="" class="img-card-btn"></button>
