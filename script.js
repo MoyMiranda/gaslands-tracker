@@ -243,11 +243,11 @@ function generar() {
         <div class="main-stats">
             <div class="card-title">`+veh['name']+`</div>
             <div class="basic-stats">
-                <span><img src="assets/handling.png" alt="" srcset="" class="img-card-btn"> `+veh['handling']+`</span>
-                <span><img src="assets/crew.png" alt="" srcset="" class="img-card-btn"> <span>`+veh['crew']+`</span></span>
+                <span><img src="assets/media/handling.png" alt="" srcset="" class="img-card-btn"> `+veh['handling']+`</span>
+                <span><img src="assets/media/crew.png" alt="" srcset="" class="img-card-btn"> <span>`+veh['crew']+`</span></span>
                 <span>
-                    <button type="button" class="btn btn-outline-dark btn-sm" onclick="gearInd(`+totalTarjetas+`,0)"><img src="assets/shift-down.png" alt="" srcset="" class="img-card-btn"></button>
-                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="gearInd(`+totalTarjetas+`,1)"><img src="assets/shift-up.png" alt="" srcset="" class="img-card-btn"></button>
+                    <button type="button" class="btn btn-outline-dark btn-sm" onclick="gearInd(`+totalTarjetas+`,0)"><img src="assets/media/shift-down.png" alt="" srcset="" class="img-card-btn"></button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="gearInd(`+totalTarjetas+`,1)"><img src="assets/media/shift-up.png" alt="" srcset="" class="img-card-btn"></button>
                 </span>
             </div>
             <div class="hull">
@@ -269,20 +269,20 @@ function generar() {
         `+equipment+`
     </div>
         <div class="card-footer">
-            <span class="peso"><img src="assets/peso.png" alt="" srcset="" class="img-card-btn">`+peso+`</span>
+            <span class="peso"><img src="assets/media/peso.png" alt="" srcset="" class="img-card-btn">`+peso+`</span>
             <span>
                 <button type="button" class="btn btn-outline-danger btn-sm" onclick="dmg(`+totalTarjetas+`,0)">
-                    <img class="img-card-btn" src="assets/damage.png" alt="">
+                    <img class="img-card-btn" src="assets/media/damage.png" alt="">
                 </button>
                 <button type="button" class="btn btn-outline-success btn-sm" onclick="dmg(`+totalTarjetas+`,1)">
-                    <img class="img-card-btn" src="assets/fix.png" alt="">
+                    <img class="img-card-btn" src="assets/media/fix.png" alt="">
                 </button>
             </span>
             <span>
                 <div class="input-group">
-                    <button class="btn btn-outline-secondary" type="button" onclick="hazardCount(0,`+totalTarjetas+`)"><img class="img-card-btn" src="assets/hazard-less.png" alt=""></button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="hazardCount(0,`+totalTarjetas+`)"><img class="img-card-btn" src="assets/media/hazard-less.png" alt=""></button>
                     <span class="input-group-text bg-transparent hazard-counter">0</span>
-                    <button class="btn btn-outline-secondary" type="button" onclick="hazardCount(1,`+totalTarjetas+`)"><img class="img-card-btn" src="assets/hazard-plus.png" alt=""></button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="hazardCount(1,`+totalTarjetas+`)"><img class="img-card-btn" src="assets/media/hazard-plus.png" alt=""></button>
                 </div>
             </span>
         </div>
@@ -335,7 +335,7 @@ function roll(target,input) {
             }
             html += `
                 <div class="dice-box">
-                    <span id="diceTest4"><img src="assets/`+img+`.png" class="dice-img" alt="" srcset=""></span>
+                    <span id="diceTest4"><img src="assets/media/`+img+`.png" class="dice-img" alt="" srcset=""></span>
                 </div>
             `;
         }
