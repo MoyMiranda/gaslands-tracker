@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    generaEquipo();
     $("input[name=peso]").change(function(){
         switch (true) {
             case $("#pesoLigero").is(':checked'):
@@ -28,7 +29,6 @@ var totalTarjetas = 0;
 
 
 function procederEquipo(){
-    generaEquipo();
     var vehClass = $("input[name=peso]:checked").val();
     var vehType = '';
     switch (vehClass) {
@@ -42,10 +42,8 @@ function procederEquipo(){
             vehType = $('#heavyCarSelect').val();
         break;
     }
-
     currentVehType = vehType;
     var veh = carData[vehType];
-
     $('#vehType').html(vehClass + ' - ' + veh['name']);
     $('#slots').html(veh['slots']);
     $('#crew').html(veh['crew']);
@@ -53,11 +51,10 @@ function procederEquipo(){
     $('#hull-info').html(veh['hull']);
     $('#handling-info').html(veh['handling']);
     $('#maxGearInfo').html(veh['gearMax']);
+    uncheck();
 }
 
 function generaEquipo(){
-    // weaponData
-    // upgradeData
     var html = `
         <table class="table">
             <thead>
@@ -428,4 +425,7 @@ function diceQty(modo, id) {
         break;
     }
     target.val(dados);
+}
+function uncheck() {
+    $('#itemsList :checkbox:checked').prop( "checked", false );
 }
