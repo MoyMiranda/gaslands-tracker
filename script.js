@@ -305,6 +305,12 @@ function rango(number) {
         case 4:
             return 'Doble'
         break;
+        case 5:
+            return 'Exp. Pequeña'
+        break;
+        case 6:
+            return 'Exp. Grande'
+        break;
     }
 }
 
