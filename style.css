@@ -25,7 +25,12 @@ main{
     display: none;
 }
 .car-card{
-    background-color: #b6b6b6;
+    background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(130, 130, 130, 0.505)
+    ), url("assets/media/card-bg.png");
+    /* background-color: #b6b6b6; */
     display: flex;
     flex-direction:column;
     gap: 5px;
@@ -107,7 +112,7 @@ main{
     text-align: center;
 }
 .equipment{
-    background-color: #ffffff;
+    background-color: #ffffff62;
     border: 6px inset #2D2D19;
     height: 40%;
     overflow-y: scroll;
