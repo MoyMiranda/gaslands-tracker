@@ -61,7 +61,7 @@
                 </div>
             </div>
         </main>
-        <!-- Modal -->
+        <!-- Modal Nuevo Coche -->
         <div class="modal fade" id="modalNewCar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -160,6 +160,28 @@
                     <div class="modal-footer">
                         <button class="btn btn-secondary" data-bs-target="#modalNewCar" data-bs-toggle="modal">Regresar</button>
                         <button class="btn btn-primary" onclick="generar()" id="generarBtn" class="btn-close" data-bs-dismiss="modal">Generar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Cargar de JSON -->
+        <!-- Modal -->
+        <div class="modal fade" id="modalLoadCar" tabindex="-1" aria-labelledby="modalLoadCarLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalLoadCarLabel">Cargar vehiculo</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                          <label for="" class="form-label">Pega un código de vehiculo valido</label>
+                          <input type="text" class="form-control" name="jsonLoad" id="jsonLoadInput" aria-describedby="helpId" placeholder="JSON serializado">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Atras</button>
+                        <button type="button" class="btn btn-primary" onclick="importJSON()">Generar</button>
                     </div>
                 </div>
             </div>

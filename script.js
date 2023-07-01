@@ -201,13 +201,27 @@ function generaJSONveh(){
         upgrades.push(mejora.name);
     });
     actual.upgrades = upgrades;
-    console.log(actual);
     return actual;
 }
 
-function generar() {
-    var veh = generaJSONveh();
-    // console.log(veh);
+function importJSON() {
+    var json = null;
+    json = $('#jsonLoadInput').val();
+    json = JSON.parse(json);
+    if ('name' in json && 'peso' in json && 'hull' in json && 'handling' in json && 'gearMax' in json && 'slots' in json && 'crew' in json && 'price' in json && 'weapons' in json && 'upgrades' in json) {
+        $('#modalLoadCar').modal('toggle');
+        generar(json);
+    } else{
+        alert('JSON no valido, falta algo -.-');
+    }
+}
+
+function generar(veh = null) {
+    if (veh === null) {
+        veh = generaJSONveh();
+    } else {
+        console.log(veh);
+    }
     var peso = '';
     switch (veh['peso']) {
         case 0:
@@ -383,8 +397,6 @@ function gearInd(id,modo) {
             actualGear = actualGear >= maxGear ? maxGear :actualGear+1;
         break;
     }
-
-    console.log(actualGear);
     $(id+' .actual-gear').html(actualGear);
 
 }
