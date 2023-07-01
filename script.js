@@ -212,6 +212,7 @@ function importJSON() {
     } else{
         alert('JSON no valido, falta algo -.-');
     }
+    $('#jsonLoadInput').val('');
 }
 
 function escapeHtml(text) {
