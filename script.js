@@ -72,9 +72,7 @@ function generaEquipo(){
             <tbody>
     `;
     // generar primero armas
-    //console.log(weaponData);
     for (const [key, arma] of Object.entries(weaponData)) {
-        // console.log(key);
         var rango = '';
         switch (arma.range) {
             case 0:
@@ -216,12 +214,20 @@ function importJSON() {
     }
 }
 
+function escapeHtml(text) {
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 function generar(veh = null) {
     if (veh === null) {
         veh = generaJSONveh();
-    } else {
-        console.log(veh);
     }
+    var jsonString = escapeHtml(JSON.stringify(veh));
     var peso = '';
     switch (veh['peso']) {
         case 0:
@@ -234,7 +240,6 @@ function generar(veh = null) {
             peso = 'Pesado';
         break;
     }
-
     var equipment = ``;
     if (veh.weapons.length > 0){
         veh.weapons.forEach(weapon => {
@@ -252,7 +257,7 @@ function generar(veh = null) {
     var tarjeta = `<div class="car-card" id="tarjeta`+totalTarjetas+`">
     <div class="stats">
         <div class="main-stats">
-            <div class="card-title">`+veh['name']+`</div>
+            <div class="card-title">`+veh['name']+`<button onclick="exportCar('` + jsonString + `')" type="button" class="btn btn-outline-primary"><img src="assets/media/export.png" class="img-card-btn"></button></div>
             <div class="basic-stats">
                 <span><img src="assets/media/handling.png" alt="" srcset="" class="img-card-btn"> `+veh['handling']+`</span>
                 <span><img src="assets/media/crew.png" alt="" srcset="" class="img-card-btn"> <span>`+veh['crew']+`</span></span>
@@ -383,12 +388,18 @@ function dmg(id,modo) {
     toggle.toggleClass('hull-cool hull-dmg');
 }
 
+function exportCar(veh){
+
+    navigator.clipboard.writeText(veh).then(function(x) {
+        alert("Copiado al portapapeles: " + veh);
+    });
+}
+
 function gearInd(id,modo) {
     //Modo 0 rapido, modo 1 lento
     id = '#tarjeta'+id;
     var actualGear = parseInt($(id+' .actual-gear').html());
     var maxGear = parseInt($(id+' .max-gear').html().slice(-1));
-    console.log(maxGear);
     switch (modo) {
         case 0:
             actualGear = actualGear <= 0  ? 0 :actualGear-1;
@@ -426,7 +437,6 @@ function globalGear(modo) {
             html = html >= 6  ? 1 :html+1;
         break;
     }
-    console.log(html);
     $('#globalGearActual').html(html);
 }
 
